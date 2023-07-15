@@ -1,0 +1,154 @@
+@import url('https://fonts.cdnfonts.com/css/salad-trial');
+@import url('https://fonts.cdnfonts.com/css/kreadon');
+
+*,
+*::before,
+*::after{
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+$height: 100vh;
+$width: 100%;
+$wk-height: 100em;
+$wk-width: 100em;
+$radius: 50%;
+$small-radius: 0.7em;
+$font: 'Salad Trial', sans-serif;
+$write-font: 'Kreadon', sans-serif;
+$text: 1em;
+$small-text: .5em;
+$large-text: 3em;
+
+$black: #181616;
+$white: #FAF9F9;
+$payne: #555B6E;
+$apricot: #FFD6BA;
+
+.App{
+  position: relative;
+  height:$height;
+  width: $width;
+  display: grid;
+  place-items: center;
+  background: url(./assets/bgg.jpg) no-repeat center;
+  background-size: cover;
+  font-family: $font;
+
+  form{
+    position: relative;
+    width: 60%;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background: linear-gradient(
+      135deg,
+      rgba($black, 0.5) 50%,
+      rgba($payne, 0.5)
+    );
+    padding: 2em;
+    border-radius: $small-radius;
+    color: $white;
+
+    span{
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      input, textarea{
+        position: relative;
+        width: 100%;
+        padding: .7em 1em;
+        border-radius: $small-radius;
+        background: rgba($payne, 0.5);
+        border: none;
+        outline: none;
+        resize: none;
+        font-family: $write-font;
+        color: $white;
+        font-size: $text;
+        
+        &:focus-within ~ label{
+          transform: translateY(-1.5em);
+          color: $white;
+          background: rgba($payne, 0.6);
+          padding: .2em;
+          font-size: $small-text;
+          border-radius: $small-radius;
+        }
+      }
+      
+      label{
+        position: absolute;
+        top: 20%;
+        left: 2%;
+        pointer-events: none;
+        color: rgba($white, 0.8);
+        font-size: $text;
+        transition: .3s ease-in-out;
+
+        &.active{
+          transform: translateY(-1.5em);
+          color: $white;
+          background: rgba($payne, 0.6);
+          padding: .2em;
+          font-size: $small-text;
+          border-radius: $small-radius;
+        }
+      }
+
+      textarea{
+        height: calc($wk-height * 0.1);
+        padding-top: 2.3em;
+      }
+    }
+
+    #submit {
+      position: relative;
+      overflow: hidden;
+      height: calc($wk-height * 0.023);
+      padding: 0 2em;
+      border-radius: $small-radius;
+      background: $payne;
+      background-size: 400%;
+      color: $white;
+      font-family: $write-font;
+      font-size: $text;
+      border: none;
+      cursor: pointer;
+      z-index: 1;
+
+      &:hover::before {
+        transform: scaleX(1);
+      }
+
+      &:hover{
+        color: $black;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: 0 50%;
+        width: 100%;
+        height: inherit;
+        border-radius: inherit;
+        background: linear-gradient(
+          82.3deg,
+          rgba($apricot, 1) 60%,
+          rgba($apricot, 1)
+        );
+        transition: all 0.475s;
+        z-index: -1;
+      }
+    }
+  }
+}
